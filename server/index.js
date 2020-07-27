@@ -24,8 +24,23 @@ app.get('/scores/retrieve', (req, res) => {
 });
 
 app.post('/scores/submit', (req, res) => {
-  
   console.log('req body', req.body)
+  var obj = {
+    topScore: req.body.topScore,
+    name: req.body.name,
+    password: req.body.password
+  }
+  App.create(obj)
+  .then(
+    console.log(`Added ${obj} to database!`)
+  )
+  .catch(
+    err => {
+      if (err) {
+        console.log(err)
+      }
+    }
+  )
 
 });
 
