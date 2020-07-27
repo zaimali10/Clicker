@@ -3,7 +3,10 @@ const app = express();
 const port = 3020;
 const path = require('path');
 const App = require('../database/index.js');
+const bodyParser = require('body-parser');
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, '/../dist')));
 
 app.get('/scores/retrieve', (req, res) => {
@@ -18,6 +21,12 @@ app.get('/scores/retrieve', (req, res) => {
           console.log(err)
         }
       })
+});
+
+app.post('/scores/submit', (req, res) => {
+  
+  console.log('req body', req.body)
+
 });
 
 app.listen(port, () => console.log(`Listening at ${port}`));

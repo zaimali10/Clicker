@@ -1,5 +1,6 @@
 import React from 'react';
 import SubmitPage from './SubmitPage.jsx'
+import $ from 'jquery';
 
 class GameWindow extends React.Component {
     constructor() {

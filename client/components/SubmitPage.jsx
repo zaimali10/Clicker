@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 
 class SubmitPage extends React.Component {
     constructor(props) {
@@ -9,6 +10,7 @@ class SubmitPage extends React.Component {
             password: ''
         };
         this.validInputs = this.validInputs.bind(this)
+        this.submitScore = this.submitScore.bind(this)
     }
 
     newName(e) {
@@ -33,7 +35,7 @@ class SubmitPage extends React.Component {
         if (!this.validInputs()) {
             return
         }
-        serverCommunicator.submitScore(this.state)
+        serverCommunicator.submitScore(this.state);
     }
 
     render() {
@@ -44,7 +46,7 @@ class SubmitPage extends React.Component {
                     <br></br>
                     <input className="user-password" type="text" placeholder="Password to update name later" value={this.password} onChange={this.newPassword.bind(this)}></input>
                     <br></br>
-                    <button className="submit-button" type="submit" disabled={!this.validInputs()} onClick={this.submitScore.bind(this)}>Submit Score</button>
+                    <button className="submit-button" disabled={!this.validInputs()} onClick={this.submitScore.bind(this)}>Submit Score</button>
                 </form>
             </div>
         )
@@ -52,19 +54,19 @@ class SubmitPage extends React.Component {
 }
 
 var serverCommunicator = {
-    submitScore: (data) => {
-        $.ajax({
-          url: 'http://localhost:3020/scores/submit',
-          method: 'POST',
-          data: data,
-          success: (res) => {
-            console.log('POST request was made', res);
-          },
-          error: (err) => {
-            console.log('POST Req Failed ', err);
-        }
-      });
-    }
+  submitScore: (data) => {
+      $.ajax({
+        url: 'http://localhost:3020/scores/submit',
+        method: 'POST',
+        data: data,
+        success: (res) => {
+          console.log('POST request was made', res);
+        },
+        error: (err) => {
+          console.log('POST Req Failed ', err);
+      }
+    });
+  }
 };
 
 export default SubmitPage;
