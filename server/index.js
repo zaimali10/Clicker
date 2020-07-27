@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const port = 3020;
 const path = require('path');
+const App = require('../database/index.js');
 
 app.use(express.static(path.join(__dirname, '/../dist')));
 

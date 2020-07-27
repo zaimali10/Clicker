@@ -5,8 +5,10 @@ class SubmitPage extends React.Component {
         super(props);
         this.state = {
             topScore: props.topScore,
-            name: ''
+            name: '',
+            password: ''
         };
+        this.validInputs = this.validInputs.bind(this)
     }
 
     newName(e) {
@@ -15,7 +17,22 @@ class SubmitPage extends React.Component {
         });
     }
 
+    newPassword(e) {
+        this.setState({
+          password: e.target.value
+        });
+    }
+
+    validInputs() {
+        return (
+          this.state.name.length < 8 && this.state.name.length > 2 && this.state.password.length > 1
+        )
+      }
+
     submitScore(e) {
+        if (!this.validInputs()) {
+            return
+        }
         serverCommunicator.submitScore(this.state)
     }
 
@@ -23,9 +40,11 @@ class SubmitPage extends React.Component {
         return(
             <div>
                 <form id='form'>
-                    <input className="user-name" type="text" placeholder="Enter Name" value={this.name} onChange={this.newName.bind(this)}></input>
+                    <input className="user-name" type="text" placeholder="Two to Eight Char. Name" value={this.name} onChange={this.newName.bind(this)}></input>
                     <br></br>
-                    <button className="submit-button" type="submit" onClick={this.submitScore.bind(this)}>Submit Score</button>
+                    <input className="user-password" type="text" placeholder="Password to update name later" value={this.password} onChange={this.newPassword.bind(this)}></input>
+                    <br></br>
+                    <button className="submit-button" type="submit" disabled={!this.validInputs()} onClick={this.submitScore.bind(this)}>Submit Score</button>
                 </form>
             </div>
         )
