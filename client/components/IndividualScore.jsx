@@ -1,17 +1,16 @@
 import React from 'react';
 
-class IndividualScores extends React.Component {
-    constructor() {
-        super();
-    }
+const IndividualScores = (props) => {
 
-    render() {
-        return(
-            <div>
-                NAME : SCORE
-            </div>
-        )
-    }
+    var eachScore = props.score.map((eachScore) => 
+        <li className="score-list">
+            {eachScore.name} with an impressive score of {eachScore.topScore}!
+        </li>
+    )
+
+    return (
+        <ol>{eachScore}</ol>
+    )
 }
 
 export default IndividualScores;

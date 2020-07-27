@@ -7,7 +7,17 @@ const App = require('../database/index.js');
 app.use(express.static(path.join(__dirname, '/../dist')));
 
 app.get('/scores/retrieve', (req, res) => {
-  res.send('Hello World')
+  App.findAll({ limit: 10 , order: [['topScore', 'DESC']]})
+    .then(
+      data => {
+        res.send(data);
+      })
+    .catch(
+      err => {
+        if(err) {
+          console.log(err)
+        }
+      })
 });
 
 app.listen(port, () => console.log(`Listening at ${port}`));

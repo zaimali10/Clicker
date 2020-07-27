@@ -7,8 +7,8 @@ class Scoreboard extends React.Component {
         super();
         this.state = {
             scores: []
-        }
-    ;}
+        };
+    }
 
 
     componentDidMount() {
@@ -25,7 +25,7 @@ class Scoreboard extends React.Component {
         return (
             <div>
                 Scoreboard
-                <IndividualScores />
+                <IndividualScores score={this.state.scores}/>
             </div>
         )
     }
