@@ -1,6 +1,6 @@
 import React from 'react';
 import SubmitPage from './SubmitPage.jsx'
-import $ from 'jquery';
+import Timer from 'react-compound-timer'
 
 class GameWindow extends React.Component {
     constructor() {
@@ -8,7 +8,8 @@ class GameWindow extends React.Component {
         this.state = {
             currentScore: 0,
             topScore: 0,
-            view: 'game'
+            view: 'game',
+            playing: false
         }
         this.buttonClicked = this.buttonClicked.bind(this);
         this.changeView = this.changeView.bind(this);
@@ -28,7 +29,7 @@ class GameWindow extends React.Component {
                 if (this.state.currentScore > this.state.topScore) {
                     this.setState({ topScore: this.state.currentScore })
                 }
-                this.setState({ currentScore: 0 });
+                this.setState({ currentScore: 0, playing: false });
             }
             .bind(this),
             10000
@@ -37,7 +38,8 @@ class GameWindow extends React.Component {
 
     gameStart() {
         this.setState({
-            currentScore: 0
+            currentScore: 0,
+            playing: true
         })
         this.gameReset();
     }
@@ -47,6 +49,13 @@ class GameWindow extends React.Component {
             view: option
         });
     }
+
+    playingStarted() {
+        return (
+            this.state.playing === true
+        )
+    }
+
 
     renderView() {
         if (this.state.view === 'game') {
@@ -60,8 +69,8 @@ class GameWindow extends React.Component {
                         <br></br>
                         Top Score this Round: {this.state.topScore}
                         <br></br>
-                        <button className="game-start" onClick={this.gameStart} >Start</button>
-                        <button className="the-one-you-want" onClick={this.buttonClicked} >Click</button>
+                        <button className="game-start" disabled={this.playingStarted()} onClick={this.gameStart}>Start</button>
+                        <button className="the-one-you-want" disabled={!this.playingStarted()} onClick={this.buttonClicked} >Click</button>
                     </div>
                 </div>
             )
