@@ -8,7 +8,7 @@ class IndividualScores extends React.Component {
     render() {
         return(
             <div>
-                INITIALS : SCORE
+                NAME : SCORE
             </div>
         )
     }
