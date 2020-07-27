@@ -20,6 +20,7 @@
     "@babel/core": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
+    "animejs": "^3.2.0",
     "babel": "^6.23.0",
     "babel-loader": "^8.1.0",
     "body-parser": "^1.19.0",
@@ -28,8 +29,8 @@
     "nodemon": "^2.0.4",
     "pg": "^8.3.0",
     "react": "^16.13.1",
-    "react-compound-timer": "^1.2.0",
     "react-dom": "^16.13.1",
+    "react-native": "^0.63.2",
     "sequelize": "^6.3.3",
     "webpack": "^4.44.0",
     "webpack-cli": "^3.3.12"

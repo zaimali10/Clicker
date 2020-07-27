@@ -23,9 +23,9 @@ class Scoreboard extends React.Component {
 
     render() {
         return (
-            <div>
-                Scoreboard
-                <IndividualScores score={this.state.scores}/>
+            <div className="scoreboard">
+                <h1 className="scoreboard-title">Scoreboard</h1>
+                <IndividualScores className="scores" score={this.state.scores}/>
             </div>
         )
     }

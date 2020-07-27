@@ -1,6 +1,5 @@
 import React from 'react';
-import SubmitPage from './SubmitPage.jsx'
-import Timer from 'react-compound-timer'
+import SubmitPage from './SubmitPage.jsx';
 
 class GameWindow extends React.Component {
     constructor() {
@@ -19,8 +18,16 @@ class GameWindow extends React.Component {
 
     buttonClicked(event) {
         this.setState({
-            currentScore: this.state.currentScore + 1,
+            currentScore: this.state.currentScore + 1
         });
+
+        function moveElmRand(elm) {
+            elm.style.position ='absolute';
+            elm.style.top = Math.floor(Math.random()*90+5)+'%';
+            elm.style.left = Math.floor(Math.random()*90+5)+'%';
+        }
+
+        moveElmRand(event.target)
     }
     
     gameReset() {
@@ -56,22 +63,28 @@ class GameWindow extends React.Component {
         )
     }
 
-
     renderView() {
+
         if (this.state.view === 'game') {
             return (
                 <div>
                     <div>
                         <button className="score-submit" onClick={() => this.changeView('submit')}>Submit My Score</button>
                     </div>
-                    <div>
+                    <div className="scoreholder">
+                        <h1 className="currentscoretitle">
                         Current Score: {this.state.currentScore}
-                        <br></br>
+                        </h1>
+                        <h1 className="topscoretitle">
                         Top Score this Round: {this.state.topScore}
-                        <br></br>
-                        <button className="game-start" disabled={this.playingStarted()} onClick={this.gameStart}>Start</button>
-                        <button className="the-one-you-want" disabled={!this.playingStarted()} onClick={this.buttonClicked} >Click</button>
+                        </h1>
                     </div>
+                        <button className="game-start" disabled={this.playingStarted()} onClick={this.gameStart}>Start</button>
+                        <br />
+
+                        <button className="the-one-you-want" disabled={!this.playingStarted()} onClick={this.buttonClicked}>
+                            {/* space holder for button name */}
+                        </button>                    
                 </div>
             )
         } else if (this.state.view === 'submit') {
