@@ -36,10 +36,18 @@ app.post('/scores/submit', (req, res) => {
     name: req.body.name,
     password: req.body.password
   }
-  if (req.body.topScore > 50) {
+  if (req.body.topScore > 39) {
     obj.topScore = 0
     obj.name = 'Oopsie I tried to cheat'
   };
+
+  if (req.body.topScore === null) {
+    obj.topScore = 0
+  }
+
+  if (req.body.name === null) {
+    obj.name = 'Unknown'
+  }
 
   App.create(obj)
   .then(
