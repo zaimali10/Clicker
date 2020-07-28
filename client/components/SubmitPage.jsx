@@ -42,10 +42,12 @@ class SubmitPage extends React.Component {
         return(
             <div>
                 <form id='form'>
-                    <input className="user-name" type="text" placeholder="Two to Eight Char. Name" value={this.name} onChange={this.newName.bind(this)}></input>
+                    <br />
+                    <input className="user-name" type="text" placeholder="Two to Eight Character Name" value={this.name} onChange={this.newName.bind(this)}></input>
                     <br></br>
-                    <input className="user-password" type="text" placeholder="Password to update name later" value={this.password} onChange={this.newPassword.bind(this)}></input>
+                    <input className="user-password" type="text" placeholder="Password (feature coming soon!)" value={this.password} onChange={this.newPassword.bind(this)}></input>
                     <br></br>
+                    <br />
                     <button className="submit-button" disabled={!this.validInputs()} onClick={this.submitScore.bind(this)}>Submit Score</button>
                 </form>
             </div>

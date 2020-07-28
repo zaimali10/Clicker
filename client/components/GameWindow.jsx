@@ -67,7 +67,7 @@ class GameWindow extends React.Component {
 
         if (this.state.view === 'game') {
             return (
-                <div>
+                <div className="gamewindow">
                     <div>
                         <button className="score-submit" onClick={() => this.changeView('submit')}>Submit My Score</button>
                     </div>

@@ -26,6 +26,7 @@ class Scoreboard extends React.Component {
             <div className="scoreboard">
                 <h1 className="scoreboard-title">Scoreboard</h1>
                 <IndividualScores className="scores" score={this.state.scores}/>
+                <br />
             </div>
         )
     }
