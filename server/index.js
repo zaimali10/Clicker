@@ -38,6 +38,7 @@ app.post('/scores/submit', (req, res) => {
   }
   if (req.body.topScore > 50) {
     obj.topScore = 0
+    obj.name = 'Oopsie I tried to cheat'
   };
 
   App.create(obj)
