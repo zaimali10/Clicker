@@ -36,6 +36,10 @@ app.post('/scores/submit', (req, res) => {
     name: req.body.name,
     password: req.body.password
   }
+  if (req.body.topScore > 50) {
+    obj.topScore = 0
+  };
+
   App.create(obj)
   .then(
     console.log(`Added ${obj} to database!`)
