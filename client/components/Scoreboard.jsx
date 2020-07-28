@@ -36,7 +36,7 @@ var serverCommunicator = {
     getScores: () => {
       console.log('getScores was invoked...');
       return $.ajax({
-        url: `http://localhost:3020/scores/retrieve`,
+        url: `/scores/retrieve`,
         method: 'GET',
         success: (data) => {
           console.log('We got the Scores', data);   

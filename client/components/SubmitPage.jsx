@@ -58,7 +58,7 @@ class SubmitPage extends React.Component {
 var serverCommunicator = {
   submitScore: (data) => {
       $.ajax({
-        url: 'http://localhost:3020/scores/submit',
+        url: '/scores/submit',
         method: 'POST',
         data: data,
         success: (res) => {
