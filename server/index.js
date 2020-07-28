@@ -44,6 +44,6 @@ app.post('/scores/submit', (req, res) => {
 
 });
 
-app.listen(port, () => console.log(`Listening at ${port}`));
+app.listen(process.env.PORT || port, () => console.log(`Listening at ${port}`));
 
 module.exports = app;
