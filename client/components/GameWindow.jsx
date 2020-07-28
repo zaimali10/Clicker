@@ -80,6 +80,9 @@ class GameWindow extends React.Component {
                         </h1>
                     </div>
                         <button className="game-start" disabled={this.playingStarted()} onClick={this.gameStart}>Start</button>
+                        <div className="game-instructions">
+                            Press Start, You Will Have 10 Seconds To Click The Red Circle As Many Times As Possible Before The Time Runs Out. If Your Current Score Is Higher Than Your Top Score, It Will Replace The Top Score Which You Can Submit Using The Submit Page.
+                        </div>
                         <br />
 
                         <button className="the-one-you-want" disabled={!this.playingStarted()} onClick={this.buttonClicked}>
