@@ -38,8 +38,7 @@ var serverCommunicator = {
       return $.ajax({
         url: `/scores/retrieve`,
         method: 'GET',
-        success: (data) => {
-          console.log('We got the Scores', data);   
+        success: (data) => { 
           return data;
         },
         error: (err) => {
